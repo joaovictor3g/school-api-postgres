@@ -9,7 +9,7 @@ module.exports = {
                 name,
                 age
             })
-        return res.status(200).send();
+        return res.json({ message: 'deu certo' });
     },
 
     async getStudantById(req, res) {
