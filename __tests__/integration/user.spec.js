@@ -12,7 +12,7 @@ describe('User', () => {
         await connection.destroy();
     });
 
-    it('should be able to create a new Studant', async () => {
+    it('should be able to get a Studant', async () => {
         const response = await request(app)
             .get('/get-studant/1')
 
