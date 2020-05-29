@@ -39,6 +39,12 @@ module.exports = {
             .del();
 
         return res.status(204).json({ message: 'studant was deleted!!!' })
+    },
+
+    async listAllRegisters(req, res) {
+        const response = await conn('new_studant').select('*');
+
+        return res.json(response);
     }
 
 };
