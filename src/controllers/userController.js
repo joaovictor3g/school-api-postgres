@@ -2,12 +2,13 @@ const conn = require('../database/connection');
 
 module.exports = {
     async create(req, res) {
-        const { name, age } = req.body;
+        const { name, age, phone } = req.body;
 
         await conn('new_studant')
             .insert({
                 name,
-                age
+                age,
+                phone
             })
         return res.json({ message: 'deu certo' });
     },
@@ -24,10 +25,10 @@ module.exports = {
 
     async updateStudant(req, res) {
         const { id } = req.params;
-        const { name, age } = req.body;
+        const { name, age, phone } = req.body;
 
         await conn('new_studant').where('id', id)
-            .update({ name, age })
+            .update({ name, age, phone })
                                                      
         return res.status(204).send();
     },
@@ -43,6 +44,22 @@ module.exports = {
 
     async listAllRegisters(req, res) {
         const response = await conn('new_studant').select('*');
+
+        return res.json(response);
+    },
+
+    async orderPerId(req, res) {
+        const response = await conn('new_studant')
+                        .select('*')
+                        .orderBy('id');
+
+        return res.json(response);
+    },
+
+    async orderByName(req, res) {
+        const response = await conn('new_studant')
+                            .select('*')
+                            .orderBy('name');
 
         return res.json(response);
     }

@@ -3,12 +3,10 @@ exports.up = function(knex) {
     return knex.schema.createTable('new_studant', function(table) {
         table.increments();
         table.string('name').notNullable();
-        table.numeric('age').notNullable();
-        table.string('telefone').notNullable();
-        table.integer('idCourse').unsigned()
-        table.foreign('idCourse').references('Curso.id');
+        table.decimal('age').notNullable();
+        table.string('phone').notNullable();
+
     })
-  
 };
 
 exports.down = function(knex) {

@@ -8,4 +8,9 @@ routes.put('/update/:id', userController.updateStudant);
 routes.delete('/delete/:id', userController.deleteStudant);
 routes.get('/see-all', userController.listAllRegisters);
 
+// Rotas de Ordenação
+routes.get('/order-by-id', userController.orderPerId);
+routes.get('/order-by-name', userController.orderByName);
+
+
 module.exports = routes;
