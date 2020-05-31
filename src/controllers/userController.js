@@ -16,9 +16,10 @@ module.exports = {
     async getStudantById(req, res) {
         const { id } = req.params;
 
-        const [response] = await conn('new_studant')
+        const response = await conn('new_studant')
             .select('*')
-            .where('id', id);
+            .where('id', id)
+            .first();
 
         return res.json(response);
     },
