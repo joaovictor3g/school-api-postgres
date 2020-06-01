@@ -20,6 +20,10 @@ routes.get('/get-studant/:id', celebrate({
 }), userController.getStudantById);
 
 routes.put('/update/:id', celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+        id: Joi.number().required()
+    }),
+
     [Segments.BODY]: Joi.object().keys({
         name: Joi.string(),
         age: Joi.number(),

@@ -40,7 +40,7 @@ module.exports = {
         await conn('new_studant').where('id', id)
             .del();
 
-        return res.status(204).json({ message: 'studant was deleted!!!' })
+        return res.status(204);
     },
 
     async listAllRegisters(req, res) {
@@ -51,16 +51,16 @@ module.exports = {
 
     async orderPerId(req, res) {
         const response = await conn('new_studant')
-                        .select('*')
-                        .orderBy('id');
+            .select('*')
+            .orderBy('id');
 
         return res.json(response);
     },
 
     async orderByName(req, res) {
         const response = await conn('new_studant')
-                            .select('*')
-                            .orderBy('name');
+            .select('*')
+            .orderBy('name');
 
         return res.json(response);
     }
